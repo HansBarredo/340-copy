@@ -13,5 +13,9 @@
     
         <%- include('../partials/footer') %>
     </div>
+    
+    <% if (typeof script !== 'undefined') { %>
+        <script src="<%= script %>"></script>
+      <% } %>
 </body>
 </html>

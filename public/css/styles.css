@@ -12,6 +12,7 @@
   display: flex;
   background-color: white;
   padding: 1rem;
+  align-items: center;
 }
 #top-header a{
   color: black;
@@ -54,7 +55,7 @@ nav li{
   display: flex;
   flex-direction: column;
   width: fit-content;
-  margin: 2rem 0  0 2rem;
+  margin: 2rem 0  0 1rem;
   color: #0492d9;
   background-color: rgba(255, 255, 255, 0.5);
 }
@@ -79,6 +80,32 @@ nav li{
   gap: 1rem;
 }
 
+/*Upgrades*/
+#cards-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+#cards-container a{
+  text-align: center;
+}
+
+#cards-container img{
+  padding: 1rem;
+  background-color: #0492d9;
+  height:100px;
+  width: 100%;
+  object-fit: contain;
+  border: solid 2px black;
+}
+
+.upgrade-card{
+  display: flex;
+  flex-direction: column;
+  
+}
 
 /* body {
   background-image: url("/images/site/checkerboard.jpg");
