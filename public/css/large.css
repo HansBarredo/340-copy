@@ -51,6 +51,7 @@
     }
 
     main{
+        display: grid !important;
         grid-template-areas: 
         "hero hero"
         "upgrade review"

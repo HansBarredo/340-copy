@@ -30,7 +30,7 @@ function displayUpgradeCards(upgrades) {
         const card = document.createElement('div');
         card.classList.add('upgrade-card'); 
         card.innerHTML = `
-            <img src="${upgrade.image_url}">
+            <img src="${upgrade.image_url}" alt="${upgrade.description}">
             <a href="#">${upgrade.upgrade}<a>
         `;
         container.appendChild(card);

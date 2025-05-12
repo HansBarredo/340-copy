@@ -67,12 +67,18 @@ nav li{
   list-style: none;
 }
 
+#info-hero h2{
+  font-size: larger;
+}
+
 #info-hero button{
   width: 80%;
   padding: 0.5rem;
   background-color: #0492d9;
   border-style:outset;
   border-color: white;
+  font-weight: bold;
+  font-size: small;
 }
 
 /*Review*/

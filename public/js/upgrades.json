@@ -1,19 +1,22 @@
 [
     {
       "upgrade": "Bumper Stickers",
-      "image_url":"/images/upgrades/bumper_sticker.jpg"
+      "image_url":"/images/upgrades/bumper_sticker.jpg",
+      "description": "Image of a bumper sticker"
     },
     {
       "upgrade": "Flames Decals",
       "image_url":"/images/upgrades/flame.jpg",
-      "description": "Assist in setting up and managing booths, stage areas, and activity zones. Facilitate group discussions, games, or workshops that promote mental health education. Distribute flyers and educational materials to event participants. Serve as event marshals or guides to ensure a smooth program flow. Capture photos and testimonials during events for future promotions."
+      "description": "Image of flame decals"
     },
     {
       "upgrade": "Flux Capacitator",
-      "image_url":"/images/upgrades/flux-cap.png"
+      "image_url":"/images/upgrades/flux-cap.png",
+      "description": "Image of a flux capacitator"
     },
     {
         "upgrade": "Hub Caps",
-        "image_url":"/images/upgrades/hub-cap.jpg"
+        "image_url":"/images/upgrades/hub-cap.jpg",
+        "description": "Image of hub caps"
     }
   ]
