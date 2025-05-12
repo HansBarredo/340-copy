@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: sans-serif;
 }
 
 /*header*/
@@ -69,6 +70,9 @@ nav li{
 #info-hero button{
   width: 80%;
   padding: 0.5rem;
+  background-color: #0492d9;
+  border-style:outset;
+  border-color: white;
 }
 
 /*Review*/
@@ -107,9 +111,3 @@ nav li{
   
 }
 
-/* body {
-  background-image: url("/images/site/checkerboard.jpg");
-  background-size:150px 150px;
-  background-repeat: repeat;
-  
-} */

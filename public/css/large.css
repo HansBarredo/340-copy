@@ -1,0 +1,71 @@
+@media only screen and (min-width: 64em){
+
+    #wrapper{
+        background: white;
+        padding: 1rem;
+        width: 60%;
+        border: solid 12px #0492d9;
+        border-radius: 10px;
+        margin: 1rem auto;
+    }
+    body{
+        
+        background-image: url("/images/site/checkerboard.jpg");
+        background-size:500px 500px;
+        background-repeat: repeat;
+       
+    }
+    
+    main{
+        display: grid;
+        background-color: white
+    }
+
+    nav ul{
+        padding:0 2rem ;
+    }
+
+    #hero{
+        height: 500px;
+        background-size: auto 325px;
+      }
+
+    #review{
+        grid-area: review;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #upgrade{
+        grid-area: upgrade;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #upgrade img{
+        width: 200px;
+    }
+
+    #hero{
+        grid-area: hero;
+    }
+
+    main{
+        grid-template-areas: 
+        "hero hero"
+        "upgrade review"
+        ;
+    }
+
+    #info-hero{
+        margin: 5rem 0  0 7rem;
+        font-size: 125%;
+        padding: 1rem;
+    }
+
+    #info-hero button{
+        margin: auto;
+        margin-top: 1rem;
+    }
+
+}
