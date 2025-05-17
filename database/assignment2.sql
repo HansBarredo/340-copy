@@ -21,7 +21,7 @@ FROM
 INNER JOIN 
     public.classification
 ON 
-    inventory.classification_sid = classification.classification_id
+    inventory.classification_id = classification.classification_id
 WHERE 
     classification.classification_name = 'Sport';
 
