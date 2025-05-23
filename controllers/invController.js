@@ -26,7 +26,7 @@ invCont.buildByModelID = async function (req, res, next) {
     let nav = await utilities.getNav()
     const { inv_make, inv_model, inv_year } = data[0];
     res.render("./inventory/detail", {
-        title: inv_make + inv_model + inv_year,
+        title: inv_make + ' ' + inv_model + ' ' + inv_year,
         nav,
         grid,
     })
