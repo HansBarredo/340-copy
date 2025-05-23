@@ -117,3 +117,50 @@ nav li{
   
 }
 
+/* Classification */
+
+main{
+  padding: 1rem;
+}
+
+#inv-display{
+  display: flex;
+  flex-direction: column;
+}
+
+#inv-display li {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#inv-display li a{
+  text-decoration: none;
+  color: black;
+}
+
+#inv-display li a img{
+  height: 100px;
+  width: 200px;
+  object-fit: contain;
+}
+
+/* #inv-display li a:hover {
+  color: #0492d9;
+  text-decoration: underline;
+} */
+
+/* #inv-display li div{
+  
+} */
+
+#inv-display li div h2{
+  margin-bottom: 1rem;
+  
+}
+
+
+
+
