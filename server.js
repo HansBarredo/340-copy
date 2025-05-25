@@ -13,6 +13,7 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoutes")
 const utilities = require("./utilities");
+const errorRoute = require("./routes/errorRoutes");
 
 
 /* ***********************
@@ -38,6 +39,16 @@ app.use("/inv", inventoryRoute)
 app.use(async (req, res, next) => {
   next({ status: 404, message: 'Sorry, we appear to have lost that page.' })
 })
+
+app.use((err, req, res, next) => {
+  const nav = utilities.getNav(); // if needed
+  console.error(err.stack);
+  res.status(500).render("errors/error", {
+    title: "500 Internal Server Error",
+    nav,
+    message: err.message || "An unexpected error occurred."
+  });
+});
 
 /* ***********************
  * Local Server Information

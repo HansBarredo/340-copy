@@ -107,3 +107,6 @@ Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)
 
 module.exports = Util
 
+Util.triggerError = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+
+
