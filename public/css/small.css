@@ -45,6 +45,12 @@ nav ul a {
 }
 
 /*Main*/
+
+body{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 #hero{
   height: 325px;
   background-image: url("/images/vehicles/delorean.jpg");
