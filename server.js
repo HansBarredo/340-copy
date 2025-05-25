@@ -40,8 +40,8 @@ app.use(async (req, res, next) => {
   next({ status: 404, message: 'Sorry, we appear to have lost that page.' })
 })
 
-app.use((err, req, res, next) => {
-  const nav = utilities.getNav(); // if needed
+app.use(async(err, req, res, next) => {
+  const nav = await utilities.getNav(); // if needed
   console.error(err.stack);
   res.status(500).render("errors/error", {
     title: "500 Internal Server Error",
