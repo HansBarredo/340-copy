@@ -61,7 +61,7 @@ Util.buildClassificationGrid = async function (data) {
 Util.buildModelGrid = async function (data) {
     let grid
     if (data.length > 0) {
-        grid = '<div id="deatil-wrapper">'
+        grid = '<div id="detail-wrapper">'
         data.forEach(vehicle => {
             grid += '<img src="' + vehicle.inv_thumbnail
                 + '" alt="Image of ' + vehicle.inv_make + ' ' + vehicle.inv_model
@@ -75,8 +75,10 @@ Util.buildModelGrid = async function (data) {
                 + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</td>'
             grid += '</tr>'
             grid += '<tr>'
-            grid += '<th scope=row>Description:</th>'
-            grid += '<td>' + vehicle.inv_description + '</td>'
+            grid += '<th colspan="2" scope=row>Description:</th>'
+            grid += '</tr>'
+            grid += '<tr>'
+            grid += '<td colspan="2">' + vehicle.inv_description + '</td>'
             grid += '</tr>'
             grid += '<tr>'
             grid += '<th scope=row>Color:</th>'
@@ -88,8 +90,6 @@ Util.buildModelGrid = async function (data) {
             grid += '</tr>'
             grid += '</tbody>'
             grid += '</table>'
-            grid += '</div>'
-            grid += '</li>'
         })
         grid += '</div>'
     } else {

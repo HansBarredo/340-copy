@@ -1,6 +1,6 @@
-@media only screen and (min-width: 64em){
+@media only screen and (min-width: 64em) {
 
-    #wrapper{
+    #wrapper {
         background: white;
         padding: 1rem;
         width: 60%;
@@ -8,65 +8,154 @@
         border-radius: 10px;
         margin: 1rem auto;
     }
-    body{
-        
+
+    body {
+
         background-image: url("/images/site/checkerboard.jpg");
-        background-size:500px 500px;
+        background-size: 500px 500px;
         background-repeat: repeat;
-       
-    }
-    
-    main{
-        display: grid;
-        background-color: white
+
     }
 
-    nav ul{
-        padding:0 2rem ;
+    main {
+        display: flex;
+        flex-direction: column;
     }
 
-    #hero{
+    nav ul {
+        padding: 0 2rem;
+    }
+
+    nav ul a {
+        text-decoration: none;
+        color: azure;
+    }
+
+    nav ul a:hover {
+        text-decoration: none;
+        color: #0492d9;
+    }
+
+    #hero {
         height: 500px;
         background-size: auto 325px;
-      }
+    }
 
-    #review{
+    #review {
         grid-area: review;
         margin-left: auto;
         margin-right: auto;
     }
 
-    #upgrade{
+    #upgrade {
         grid-area: upgrade;
         margin-left: auto;
         margin-right: auto;
     }
 
-    #upgrade img{
+    #upgrade img {
         width: 200px;
     }
 
-    #hero{
+    #hero {
         grid-area: hero;
     }
 
-    main{
+    #home-wrapper {
         display: grid !important;
-        grid-template-areas: 
-        "hero hero"
-        "upgrade review"
+        grid-template-areas:
+            "hero hero"
+            "upgrade review"
         ;
     }
 
-    #info-hero{
-        margin: 5rem 0  0 5rem;
+    #info-hero {
+        margin: 5rem 0 0 5rem;
         font-size: 125%;
         padding: 1rem;
     }
 
-    #info-hero button{
+    #info-hero button {
         margin: auto;
         margin-top: 1rem;
+    }
+
+    #detail-wrapper {
+        display: grid;
+        grid-template-areas:
+            "image heading"
+            "image detail";
+        grid-template-columns: 1fr 1fr;
+
+        gap: 1rem;
+        align-items: start;
+        padding: 1rem;
+    }
+
+    #detail-wrapper img {
+        display: flex;
+        grid-area: image;
+        width: 100%;
+        max-width: 100%;
+        justify-content: center;
+        align-content: center;
+        height: 100%;
+        object-fit: contain;
+
+    }
+
+    #detail-wrapper h2 {
+        grid-area: heading;
+        margin: 0 0 1rem 0;
+    }
+
+    #detail-wrapper table {
+        grid-area: detail;
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    #detail-wrapper table tbody tr:nth-child(2),
+    #detail-wrapper table tbody tr:nth-child(3),
+    #detail-wrapper table tbody tr:nth-child(5) {
+        background-color: rgb(226, 226, 226);
+    }
+
+    #detail-wrapper table th,
+    #detail-wrapper table td {
+
+        padding: 0.5rem;
+        text-align: left;
+    }
+
+    table td[colspan="2"],
+    table th[colspan="2"] {
+        width: 100%;
+    }
+
+    #inv-display {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box
+    }
+
+    #inv-display li {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+        max-width: 100%;
+        border-radius: 5px;
+    }
+
+    #inv-display li img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
     }
 
 }
