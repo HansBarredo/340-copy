@@ -12,8 +12,34 @@ const app = express()
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoutes")
+const accountRoute = require("./routes/accountRoutes")
 const utilities = require("./utilities");
 const errorRoute = require("./routes/errorRoutes");
+const session = require("express-session");
+const pool = require('./database/');
+
+
+
+/* ***********************
+ * Middleware
+ * ************************/
+app.use(session({
+  store: new (require('connect-pg-simple')(session))({
+    createTableIfMissing: true,
+    pool,
+  }),
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true,
+  name: 'sessionId',
+}))
+
+// Express Messages Middleware
+app.use(require('connect-flash')())
+app.use(function (req, res, next) {
+  res.locals.messages = require('express-messages')(req, res)
+  next()
+})
 
 
 /* ***********************
@@ -35,6 +61,10 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 // Inventory routes
 app.use("/inv", inventoryRoute)
 
+// Account routes
+app.use("/account", accountRoute)
+
+
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({ status: 404, message: 'Sorry, we appear to have lost that page.' })
@@ -54,8 +84,8 @@ app.use(async(err, req, res, next) => {
  * Local Server Information
  * Values from .env (environment) file
  *************************/
-const port = process.env.PORT
-const host = process.env.HOST
+const port = process.env.PORT || 5500
+const host = process.env.HOST || 'localhost'
 
 /* ***********************
  * Log statement to confirm server operation
@@ -63,6 +93,7 @@ const host = process.env.HOST
 app.listen(port, () => {
   console.log(`app listening on ${host}:${port}`)
 })
+
 
 
 /* ***********************
