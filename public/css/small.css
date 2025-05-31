@@ -128,10 +128,172 @@ body{
   
 }
 
+.login-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  align-self: center;
+  justify-self: center;
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 0.5rem 0 1rem 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #0056b3;
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.signup-link a {
+  text-decoration: none;
+  color: #007BFF;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+.form-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.registration-form input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.registration-form button {
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  width: 100%;
+  background-color: #005bbb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.flash-message {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  background-color: #fdecea;
+  border-left: 5px solid #f44336;
+  color: #333;
+}
+
+input:required:invalid,
+input:focus:invalid {
+  background-image: url(/images/close.png);
+  background-position:right center;
+  background-position-x: calc(100% - 5px) ;
+  background-repeat: no-repeat;
+  background-size: 20px;
+
+
+}
+
+input:required:valid {
+  background-image: url(/images/check.png);
+  background-position: right center;
+    background-position-x: calc(100% - 5px);
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+.addClass-container input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin: 0.5rem 0 1rem 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.addClass-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addClass-container button:hover {
+  background-color: #0056b3;
+}
+
+.addClass-container input[type="text"]{
+  width: 100%;
+  padding: 10px;
+  margin: 0.5rem 0 1rem 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.addClass-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addClass-container button:hover {
+  background-color: #0056b3;
+}
+
 /* Classification */
 
 main{
   padding: 1rem;
+  height: 100%;
+  display: flex;
 }
 
 #inv-display{
@@ -198,7 +360,4 @@ table td[colspan="2"],
 table th[colspan="2"] {
   width: 100%;
 }
-
-
-
 

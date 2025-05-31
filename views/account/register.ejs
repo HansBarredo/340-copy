@@ -1,0 +1,47 @@
+<main class="form-container">
+    <h1>
+        <%= title %>
+    </h1>
+
+    <% if (messages.notice) { %>
+        <div class="alert alert-success">
+            <%= messages.notice %>
+        </div>
+        <% } %>
+        
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error=> { %>
+                <li>
+                    <%= error.msg %>
+                </li>
+                <% }) %>
+        </ul>
+        <% } %>
+      
+            <form action="/account/register" method="POST" class="registration-form">
+                <label for="first_name">First Name</label>
+                <input type="text" id="account_firstname" name="account_firstname" required
+                    value="<%= typeof locals.first_name != 'undefined' ? locals.first_name : '' %>" />
+
+                <label for="last_name">Last Name</label>
+                <input type="text" id="account_lastname" name="account_lastname" required
+                    value="<%= typeof locals.last_name != 'undefined' ? locals.last_name : '' %>" />
+
+                <label for="email">Email Address</label>
+                <input type="email" id="account_email" name="account_email" required
+                    value="<%= typeof locals.email != 'undefined' ? locals.email : '' %>" />
+
+                <label for="password">Password</label>
+                <input type="password" id="account_password" name="account_password" required
+                   pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+                    title="Password must be at least 12 characters, contain 1 uppercase letter, 1 number, and 1 special character" />
+
+                <div class="password-toggle">
+                    <input type="checkbox" id="togglePassword" />
+                    <label for="togglePassword">Show Password</label>
+                </div>
+
+                <button type="submit">Register</button>
+            </form>
+</main>

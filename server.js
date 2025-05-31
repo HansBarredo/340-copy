@@ -11,12 +11,15 @@ const env = require("dotenv").config()
 const app = express()
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
+const accountController = require("./controllers/accountController")
 const inventoryRoute = require("./routes/inventoryRoutes")
 const accountRoute = require("./routes/accountRoutes")
 const utilities = require("./utilities");
 const errorRoute = require("./routes/errorRoutes");
 const session = require("express-session");
 const pool = require('./database/');
+const bodyParser = require("body-parser")
+
 
 
 
@@ -33,6 +36,9 @@ app.use(session({
   saveUninitialized: true,
   name: 'sessionId',
 }))
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // Express Messages Middleware
 app.use(require('connect-flash')())
@@ -62,7 +68,15 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 app.use("/inv", inventoryRoute)
 
 // Account routes
-app.use("/account", accountRoute)
+app.use("/account", require("./routes/accountRoutes"))
+
+// Route to build login view
+app.get("/login", utilities.handleErrors(accountController.buildLogin))
+
+app.get("/register", utilities.handleErrors(accountController.buildRegister))
+
+//Error
+app.use('/errors', errorRoute)
 
 
 // File Not Found Route - must be last route in list
@@ -70,28 +84,17 @@ app.use(async (req, res, next) => {
   next({ status: 404, message: 'Sorry, we appear to have lost that page.' })
 })
 
-app.use(async(err, req, res, next) => {
-  const nav = await utilities.getNav(); // if needed
-  console.error(err.stack);
-  res.status(500).render("errors/error", {
-    title: "500 Internal Server Error",
-    nav,
-    message: err.message || "An unexpected error occurred."
-  });
-});
-
 /* ***********************
  * Local Server Information
  * Values from .env (environment) file
  *************************/
-const port = process.env.PORT || 5500
-const host = process.env.HOST || 'localhost'
+const port = process.env.PORT
 
 /* ***********************
  * Log statement to confirm server operation
  *************************/
 app.listen(port, () => {
-  console.log(`app listening on ${host}:${port}`)
+  console.log(`app listening on ${port}`)
 })
 
 

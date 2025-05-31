@@ -32,4 +32,22 @@ invCont.buildByModelID = async function (req, res, next) {
     })
 }
 
+invCont.buildInventory= async function(req, res, next) {
+    let nav = await utilities.getNav()
+    res.render("inventory/inv", {
+        title: "Inventory Menu",
+        nav,
+        errors: null
+    })
+}
+
+invCont.buildAddClass = async function (req, res, next) {
+    let nav = await utilities.getNav()
+    res.render("./inventory/add-classification", {
+        title: "Add Classification",
+        nav,
+        errors: null
+    })
+}
+
 module.exports = invCont
