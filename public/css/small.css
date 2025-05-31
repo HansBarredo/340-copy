@@ -155,7 +155,7 @@ body{
 .login-container button {
   width: 100%;
   padding: 10px;
-  background-color: #007BFF;
+  background-color: #0056b3;
   border: none;
   color: white;
   font-size: 1rem;
@@ -174,7 +174,7 @@ body{
 
 .signup-link a {
   text-decoration: none;
-  color: #007BFF;
+  color: #0056b3;
 }
 
 .signup-link a:hover {
@@ -270,7 +270,7 @@ input:required:valid {
 .addClass-container button {
   width: 50%;
   padding: 10px;
-  background-color: #007BFF;
+  background-color: #0056b3;
   border: none;
   color: white;
   font-size: 1rem;
@@ -340,7 +340,7 @@ input:required:valid {
 #addInventoryForm button {
   width: 50%;
   padding: 10px;
-  background-color: #007BFF;
+  background-color: #0056b3;
   border: none;
   color: white;
   font-size: 1rem;
@@ -352,7 +352,7 @@ input:required:valid {
 }
 
 #addInventoryForm button:hover {
-  background-color: #0056b3;
+  background-color: #004896;
 }
 
 #addInventoryForm input {
