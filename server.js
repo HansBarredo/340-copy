@@ -12,6 +12,7 @@ const app = express()
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const accountController = require("./controllers/accountController")
+const invController = require("./controllers/invController")
 const inventoryRoute = require("./routes/inventoryRoutes")
 const accountRoute = require("./routes/accountRoutes")
 const utilities = require("./utilities");
@@ -74,6 +75,7 @@ app.use("/account", require("./routes/accountRoutes"))
 app.get("/login", utilities.handleErrors(accountController.buildLogin))
 
 app.get("/register", utilities.handleErrors(accountController.buildRegister))
+
 
 //Error
 app.use('/errors', errorRoute)

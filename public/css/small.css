@@ -288,6 +288,78 @@ input:required:valid {
   background-color: #0056b3;
 }
 
+#addInventoryForm{
+  max-width: 500px;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+#addInventoryForm select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+#addInventoryForm select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  
+}
+
+#addInventoryForm label {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+#addInventoryForm button {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+#addInventoryForm input {
+  padding: 0.5rem;
+}
+
+#addInventoryForm input:required:invalid,
+#addInventoryForm input:focus:invalid {
+  background-image: url(/images/close.png);
+  background-position: right center;
+  background-position-x: calc(100% - 5px);
+  background-repeat: no-repeat;
+  background-size: 20px;
+}
+
+#addInventoryForm input:required:valid {
+  background-image: url(/images/check.png);
+  background-position: right center;
+  background-position-x: calc(100% - 5px);
+  background-repeat: no-repeat;
+  background-size: 20px;
+}
+
+.validation-error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
 /* Classification */
 
 main{

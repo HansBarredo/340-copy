@@ -1,6 +1,22 @@
+<h1>
+    <%= title %>
+</h1>
+
+<% if (errors && errors.errors && errors.errors.length> 0) { %>
+    <div class="validation-errors">
+        <ul>
+            <% errors.errors.forEach(function(error) { %>
+                <li>
+                    <%= error.msg %>
+                </li>
+                <% }) %>
+        </ul>
+    </div>
+    <% }%>
+
 <div class="addClass-container">
-    <form id="adddClassForm" action="/inventory/add-classification" method="post">
-        <input type="text" name="classification" placeholder="classification" required />
+    <form id="adddClassForm" action="/inv/add-classification" method="post">
+        <input type="text" name="classification_name" placeholder="classification" required />
         <button type="submit">Add</button>
     </form>
 </div>
