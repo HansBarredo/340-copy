@@ -223,8 +223,15 @@ body{
   color: #333;
 }
 
-input:required:invalid,
-input:focus:invalid {
+.inv_menu{
+  display: flex;
+  flex-direction: column;
+  gap:1em;
+
+}
+
+input:required:invalid:not(:placeholder-shown),
+input:required:invalid:focus:not(:placeholder-shown) {
   background-image: url(/images/close.png);
   background-position:right center;
   background-position-x: calc(100% - 5px) ;
@@ -241,6 +248,16 @@ input:required:valid {
     background-repeat: no-repeat;
     background-size: 20px;
 }
+.addClass-container{
+  max-width: 500px;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 8px;
+    background-color: #f7f7f7;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
 
 .addClass-container input[type="text"] {
   width: 100%;
@@ -251,7 +268,7 @@ input:required:valid {
 }
 
 .addClass-container button {
-  width: 100%;
+  width: 50%;
   padding: 10px;
   background-color: #007BFF;
   border: none;
@@ -259,6 +276,10 @@ input:required:valid {
   font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
+  justify-self: center;
+  display: block;
+  margin: 0 auto;
+
 }
 
 .addClass-container button:hover {
@@ -273,16 +294,6 @@ input:required:valid {
   border-radius: 5px;
 }
 
-.addClass-container button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007BFF;
-  border: none;
-  color: white;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-}
 
 .addClass-container button:hover {
   background-color: #0056b3;
@@ -327,37 +338,45 @@ input:required:valid {
 }
 
 #addInventoryForm button {
+  width: 50%;
+  padding: 10px;
+  background-color: #007BFF;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-self: center;
   display: block;
-  margin-top: 1rem;
-  font-weight: bold;
+  margin: 1rem auto;
+}
+
+#addInventoryForm button:hover {
+  background-color: #0056b3;
 }
 
 #addInventoryForm input {
   padding: 0.5rem;
 }
 
-#addInventoryForm input:required:invalid,
-#addInventoryForm input:focus:invalid {
-  background-image: url(/images/close.png);
-  background-position: right center;
-  background-position-x: calc(100% - 5px);
-  background-repeat: no-repeat;
-  background-size: 20px;
-}
-
-#addInventoryForm input:required:valid {
-  background-image: url(/images/check.png);
-  background-position: right center;
-  background-position-x: calc(100% - 5px);
-  background-repeat: no-repeat;
-  background-size: 20px;
-}
 
 .validation-error {
   color: red;
   font-size: 0.9em;
   margin-top: 2px;
   margin-bottom: 10px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -webkit-moz-appearance: textfield;
 }
 
 /* Classification */
@@ -433,3 +452,28 @@ table th[colspan="2"] {
   width: 100%;
 }
 
+.validation-errors {
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  color: #842029;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+  max-width: 500px;
+  display: block;
+  margin: auto;
+}
+
+.validation-errors ul {
+  margin: 0;
+  
+  padding-left: 20px;
+}
+
+.validation-errors li {
+  color:#e73e4c ;
+  list-style-type: disc;
+  margin-bottom: 5px;
+  font-weight: bold;
+}

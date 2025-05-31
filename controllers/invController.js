@@ -64,14 +64,14 @@ invCont.addClassification = async function (req, res) {
         "notice",
         `You\'re new classification ${classification_name} was added`
       )
-        res.status(201).render("inventory/add-classification", {
+        res.status(201).render("inventory/inv", {
         title: "New Classification",
         nav,
       })
     } else {
       req.flash("notice", "Sorry, the registration failed.")
-        res.status(501).render("inventory/add-classification", {
-        title: "New Classification",
+        res.status(501).render("inventory/inv", {
+        title: "Add New Classification",
         nav,
       })
     }
@@ -81,7 +81,7 @@ invCont.buildAddVehicle = async function (req, res, next) {
     let nav = await utilities.getNav()
     let classificationList = await utilities.buildClassificationList()
     res.render("inventory/add-vehicle", {
-        title: "Add Vehicle",
+        title: "Add New Vehicle",
         nav,
         classificationList,  
         errors: null
@@ -101,12 +101,12 @@ invCont.addVehicle = async function (req, res) {
         "notice",
           `You\'ve added ${inv_make} + '' ${inv_model} + ' ' + ${inv_year}+ to inventory.`
       )
-        res.status(201).render("inventory/add-classification", {
+        res.status(201).render("inventory/inv", {
         nav
       })
     } else {
       req.flash("notice", "Sorry, adding failed.")
-        res.status(501).render("inventory/add-classification", {
+        res.status(501).render("inventory/inv", {
         nav
       })
     }

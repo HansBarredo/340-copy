@@ -11,7 +11,7 @@ validate.classificationRules = () => {
             .withMessage("Classification name is required.")
             .isLength({ min: 2 })
             .withMessage("Classification name must be at least 2 characters long.")
-            .matches(/^[a-zA-Z0-9\s]+$/)
+            .matches(/^[a-zA-Z\s]+$/)
             .withMessage("Classification name must contain only letters, numbers, and spaces.")
             .custom(async (classification_name) => {
                 const classExists = await inventorytModel.checkExistingClass(classification_name)
