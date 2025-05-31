@@ -2,6 +2,12 @@
     <%= title %>
 </h1>
 
+<% if (notice && notice.length> 0) { %>
+    <div class="flash-message">
+        <%= notice[0] %>
+    </div>
+    <% }%>
+
 <% if (errors && errors.length> 0) { %>
     <div class="validation-errors">
         <ul>
