@@ -477,3 +477,26 @@ table th[colspan="2"] {
   margin-bottom: 5px;
   font-weight: bold;
 }
+
+.password-toggle{
+  display: flex;
+  height: 42px;
+align-content: center;
+margin-top: 1rem;
+}
+
+.password-toggle label,
+.password-toggle input{
+  margin: 0;
+}
+
+.password-toggle label{
+  width: 135px !important;
+  align-self: center;
+}
+
+.password-toggle input {
+  width:20px
+}
+
+

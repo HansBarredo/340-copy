@@ -40,6 +40,7 @@ app.use(session({
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.static("public"));
 
 // Express Messages Middleware
 app.use(require('connect-flash')())

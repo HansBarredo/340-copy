@@ -35,13 +35,15 @@
                 <label for="password">Password</label>
                 <input type="password" id="account_password" name="account_password" required
                    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
-                    title="Password must be at least 12 characters, contain 1 uppercase letter, 1 number, and 1 special character" />
+                    title="Password must be at least 12 characters, contain 1 uppercase letter, 1 number, and 1 special character" 
+                    />
 
                 <div class="password-toggle">
-                    <input type="checkbox" id="togglePassword" />
                     <label for="togglePassword">Show Password</label>
+                    <input type="checkbox" id="togglePassword" />
                 </div>
 
                 <button type="submit">Register</button>
             </form>
+            <script src="/js/showPassword.js"></script>
 </main>
