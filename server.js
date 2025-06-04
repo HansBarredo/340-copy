@@ -41,7 +41,6 @@ app.use(session({
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static("public"));
-
 // Express Messages Middleware
 app.use(require('connect-flash')())
 app.use(function (req, res, next) {
@@ -70,7 +69,7 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 app.use("/inv", inventoryRoute)
 
 // Account routes
-app.use("/account", require("./routes/accountRoutes"))
+app.use("/account", accountRoute)
 
 // Route to build login view
 app.get("/login", utilities.handleErrors(accountController.buildLogin))

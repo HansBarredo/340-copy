@@ -89,6 +89,7 @@ invCont.buildAddVehicle = async function (req, res, next) {
   })
 }
 
+
 invCont.addVehicle = async function (req, res) {
   let nav = await utilities.getNav()
   const {

@@ -8,42 +8,42 @@
             <%= messages.notice %>
         </div>
         <% } %>
-        
-    <% if (errors) { %>
-        <ul class="notice">
-            <% errors.array().forEach(error=> { %>
-                <li>
-                    <%= error.msg %>
-                </li>
-                <% }) %>
-        </ul>
-        <% } %>
-      
-            <form action="/account/register" method="POST" class="registration-form">
-                <label for="first_name">First Name</label>
-                <input type="text" id="account_firstname" name="account_firstname" required
-                    value="<%= typeof locals.first_name != 'undefined' ? locals.first_name : '' %>" />
 
-                <label for="last_name">Last Name</label>
-                <input type="text" id="account_lastname" name="account_lastname" required
-                    value="<%= typeof locals.last_name != 'undefined' ? locals.last_name : '' %>" />
+            <% if (errors) { %>
+                <ul class="notice">
+                    <% errors.array().forEach(error=> { %>
+                        <li>
+                            <%= error.msg %>
+                        </li>
+                        <% }) %>
+                </ul>
+                <% } %>
 
-                <label for="email">Email Address</label>
-                <input type="email" id="account_email" name="account_email" required
-                    value="<%= typeof locals.email != 'undefined' ? locals.email : '' %>" />
+                    <form action="/account/register" method="POST" class="registration-form">
+                        <label for="account_firstname">First Name</label>
+                        <input type="text" id="account_firstname" name="account_firstname" required
+                            value="<%= typeof locals.account_firstname !== 'undefined' ? locals.account_firstname : '' %>" />
 
-                <label for="password">Password</label>
-                <input type="password" id="account_password" name="account_password" required
-                   pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
-                    title="Password must be at least 12 characters, contain 1 uppercase letter, 1 number, and 1 special character" 
-                    />
+                        <label for="account_lastname">Last Name</label>
+                        <input type="text" id="account_lastname" name="account_lastname" required
+                            value="<%= typeof locals.account_lastname !== 'undefined' ? locals.account_lastname : '' %>" />
 
-                <div class="password-toggle">
-                    <label for="togglePassword">Show Password</label>
-                    <input type="checkbox" id="togglePassword" />
-                </div>
+                        <label for="account_email">Email Address</label>
+                        <input type="email" id="account_email" name="account_email" required
+                            value="<%= typeof locals.account_email !== 'undefined' ? locals.account_email : '' %>" />
 
-                <button type="submit">Register</button>
-            </form>
-            <script src="/js/showPassword.js"></script>
+                        <label for="account_password">Password</label>
+                        <input type="password" id="account_password" name="account_password" required
+                            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+                            title="Password must be at least 12 characters, contain 1 uppercase letter, 1 number, and 1 special character" />
+
+                        <div class="password-toggle">
+                            <label for="togglePassword">Show Password</label>
+                            <input type="checkbox" id="togglePassword" />
+                        </div>
+
+                        <button type="submit">Register</button>
+                    </form>
+
+                    <script src="/js/showPassword.js"></script>
 </main>
