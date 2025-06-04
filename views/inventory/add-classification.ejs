@@ -23,7 +23,8 @@
 <div class="addClass-container">
     <form id="adddClassForm" action="/inv/add-classification" method="post">
         <span><em>NAME MUST ME ALPHABETIC CHARACTERS ONLY</em></span>
-        <input type="text" name="classification_name" placeholder="classification" required />
+        <input type="text" name="classification_name" placeholder="classification" required
+            value="<%= typeof classification_name !== 'undefined' ? classification_name : '' %>" />
         <button type="submit">Add</button>
     </form>
 </div>
