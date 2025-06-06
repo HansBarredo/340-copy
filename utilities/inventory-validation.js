@@ -6,7 +6,6 @@ const inventorytModel = require("../models/inventory-model")
 // Classification rules
 validate.classificationRules = () => {
     return [
-        // classification_name is required, must be 2+ chars, and must not already exist
         body("classification_name")
             .trim()
             .notEmpty()

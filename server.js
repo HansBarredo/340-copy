@@ -48,6 +48,7 @@ app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
+
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
 // app.use(cookieParser())
@@ -115,7 +116,7 @@ app.use(async (err, req, res, next) => {
     message ="Oh no! There was a crash. Maybe try a different route?"
   }
   
-  res.render("errors/error", {
+  res.status(err.status || 500).render("errors/trigger-error", {
     title: err.status || 'Server Error',
     message,
     nav
