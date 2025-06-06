@@ -14,12 +14,15 @@ const baseController = require("./controllers/baseController")
 const accountController = require("./controllers/accountController")
 const invController = require("./controllers/invController")
 const inventoryRoute = require("./routes/inventoryRoutes")
-const accountRoute = require("./routes/accountRoutes")
+const accountRoute = require("./routes/accountRoutes") 
 const utilities = require("./utilities");
 const errorRoute = require("./routes/errorRoutes");
 const session = require("express-session");
 const pool = require('./database/');
-const bodyParser = require("body-parser")
+const flash = require("connect-flash")
+// const bodyParser = require("body-parser")
+// const cookieParser = require("cookie-parser")
+
 
 
 
@@ -38,16 +41,16 @@ app.use(session({
   name: 'sessionId',
 }))
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static("public"));
 // Express Messages Middleware
-app.use(require('connect-flash')())
+app.use(flash())
 app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
-
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+// app.use(cookieParser())
 
 /* ***********************
  * View Engine and Templates
@@ -60,8 +63,7 @@ app.set("layout", "./layouts/layout") // not at views root
 /* ***********************
  * Routes
  *************************/
-app.use(static)
-
+app.use(express.static("public"))
 //Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
 
@@ -69,8 +71,7 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 app.use("/inv", inventoryRoute)
 
 // Account routes
-app.use("/account", accountRoute)
-
+app.use("/account", accountRoute) 
 // Route to build login view
 app.get("/login", utilities.handleErrors(accountController.buildLogin))
 

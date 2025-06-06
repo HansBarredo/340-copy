@@ -9,8 +9,20 @@ const invCont = {}
 invCont.buildByClassificationId = async function (req, res, next) {
   const classification_id = req.params.classificationId
   const data = await invModel.getInventoryByClassificationId(classification_id)
+
+
+  if (!data || data.length === 0) {
+    const nav = await utilities.getNav()
+    req.flash("notice", "No vehicles found for that classification.")
+    return res.status(404).render("inventory/classification", {
+      title: "No Vehicles Found",
+      nav,
+      grid: "<p>No vehicles found in this classification.</p>"
+    })
+  }
+
   const grid = await utilities.buildClassificationGrid(data)
-  let nav = await utilities.getNav()
+  const nav = await utilities.getNav()
   const className = data[0].classification_name
   res.render("inventory/classification", {
     title: className + " vehicles",
@@ -19,11 +31,22 @@ invCont.buildByClassificationId = async function (req, res, next) {
   })
 }
 
+
 invCont.buildByModelID = async function (req, res, next) {
   const model_id = req.params.modelId
   const data = await invModel.getInventoryByModelId(model_id)
-  const grid = await utilities.buildModelGrid(data)
   let nav = await utilities.getNav()
+
+  if (!data || data.length === 0) {
+    req.flash("notice", "Vehicle not found.")
+    return res.status(404).render("inventory/detail", {
+      title: "Vehicle Not Found",
+      nav,
+      grid: "<p>Vehicle details not available.</p>"
+    })
+  }
+
+  const grid = await utilities.buildModelGrid(data)
   const { inv_make, inv_model, inv_year } = data[0]
   res.render("inventory/detail", {
     title: `${inv_make} ${inv_model} ${inv_year}`,
@@ -109,7 +132,7 @@ invCont.addVehicle = async function (req, res) {
     res.status(201).render("inventory/add-vehicle", {
       title: "Add New Vehicle",
       nav,
-      classificationList: await utilities.buildClassificationList(),
+      classificationList,
       errors: null,
       notice: req.flash("notice")
     })
@@ -118,7 +141,7 @@ invCont.addVehicle = async function (req, res) {
     res.status(501).render("inventory/add-vehicle", {
       title: "Add New Vehicle",
       nav,
-      classificationList: await utilities.buildClassificationList(),
+      classificationList,
       errors: null,
       notice: req.flash("notice")
     })

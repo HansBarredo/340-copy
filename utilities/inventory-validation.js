@@ -3,8 +3,10 @@ const { body, validationResult } = require("express-validator")
 const validate = {}
 const inventorytModel = require("../models/inventory-model")
 
+// Classification rules
 validate.classificationRules = () => {
     return [
+        // classification_name is required, must be 2+ chars, and must not already exist
         body("classification_name")
             .trim()
             .notEmpty()
@@ -12,16 +14,38 @@ validate.classificationRules = () => {
             .isLength({ min: 2 })
             .withMessage("Classification name must be at least 2 characters long.")
             .matches(/^[a-zA-Z\s]+$/)
-            .withMessage("Classification name must contain only letters, numbers, and spaces.")
+            .withMessage("Classification name must contain only letters and spaces.")
             .custom(async (classification_name) => {
                 const classExists = await inventorytModel.checkExistingClass(classification_name)
                 if (classExists) {
-                    throw new Error("Classification exists. Please log in or use different classification")
+                    throw new Error("Classification exists. Please log in or use a different classification")
                 }
-        }),
-    
+            }),
     ]
 }
+
+/* ******************************
+ * Check data and return errors or continue to classification addition
+ * ***************************** */
+validate.checkClassData = async (req, res, next) => {
+  let errors = validationResult(req);
+
+  const classification_name = req.body?.classification_name || "";
+
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    res.render("inventory/add-classification", {
+      errors: errors.array(),
+      title: "New Classification",
+      nav,
+      classification_name,
+    });
+    return;
+  }
+
+  next();
+};
+
 
 validate.vehicleRules = () => {
     return [
@@ -79,36 +103,26 @@ validate.vehicleRules = () => {
     ]
 }
 
-
-validate.checkClassData = async (req, res, next) => {
-    const { classification_name } = req.body
-    let errors = []
-    errors = validationResult(req)
-    if (!errors.isEmpty()) {
-        let nav = await utilities.getNav()
-        res.render("inventory/add-classification", {
-            errors,
-            title: "New Classification",
-            nav,
-            classification_name
-        })
-        return
-    }
-    next()
-}
+/* ******************************
+ * Check data and return errors or continue to vehicle addition
+ * ***************************** */
 
 validate.checkVehicleData = async (req, res, next) => {
-    const { inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id } = req.body
-    let errors = []
-    errors = validationResult(req)
-    if (!errors.isEmpty()) {
-        let nav = await utilities.getNav()
-        let classificationList = await utilities.buildClassificationList(classification_id) 
-        res.render("inventory/add-vehicle", {
-            errors: errors.array(),
-            title: "Add Vehicle",
-            nav,
-            classificationList,
+  let errors = validationResult(req)
+  let nav = await utilities.getNav()
+  let classificationList = await utilities.buildClassificationList()
+  const {
+  inv_make, inv_model, inv_year, inv_description,
+  inv_image, inv_thumbnail, inv_price, inv_miles,
+  inv_color, classification_id
+} = req.body;
+  if (!errors.isEmpty()) {
+    res.render("inventory/add-vehicle", {
+      title: "Add New Vehicle",
+      nav,
+      classificationList,
+      errors: errors.array(),
+      notice: req.flash("notice"),
             inv_make,
             inv_model,
             inv_year,
@@ -119,10 +133,11 @@ validate.checkVehicleData = async (req, res, next) => {
             inv_miles,
             inv_color,
             classification_id
-        })
-        return
-    }
-    next()
+    })
+    return
+  }
+  next()
 }
+
 
 module.exports = validate

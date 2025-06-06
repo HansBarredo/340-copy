@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+    <%- include('../partials/nav', { nav: nav }) %>
+
+        <main>
+            <h1>Account Management</h1>
+
+            <% if (message.length> 0) { %>
+                <div class="flash-message success">
+                    <%= message[0] %>
+                </div>
+                <% } %>
+
+                    <% if (errors.length> 0) { %>
+                        <div class="flash-message error">
+                            <%= errors[0] %>
+                        </div>
+                        <% } %>
+
+                            <p>You're logged in.</p>
+        </main>
+
+        <%- include('../partials/footer') %>

@@ -143,7 +143,7 @@ body{
   margin-bottom: 1.5rem;
 }
 
-.login-container input[type="text"],
+.login-container input[type="email"],
 .login-container input[type="password"] {
   width: 100%;
   padding: 10px;
@@ -367,14 +367,13 @@ input:required:valid {
   margin-bottom: 10px;
 }
 
-/* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* Firefox */
+
 input[type=number] {
   -webkit-moz-appearance: textfield;
 }
@@ -410,15 +409,6 @@ main{
   width: 200px;
   object-fit: contain;
 }
-
-/* #inv-display li a:hover {
-  color: #0492d9;
-  text-decoration: underline;
-} */
-
-/* #inv-display li div{
-  
-} */
 
 #inv-display li div h2{
   margin-bottom: 1rem;
@@ -497,6 +487,34 @@ margin-top: 1rem;
 
 .password-toggle input {
   width:20px
+}
+
+
+.form-success {
+  background-color: #d1e7dd;
+  border: 1px solid #badbcc;
+  color: #0f5132;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.form-errors {
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  color: #842029;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.form-errors ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.form-errors li {
+  list-style-type: disc;
 }
 
 
