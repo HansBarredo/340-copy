@@ -111,12 +111,12 @@ invCont.addVehicle = async function (req, res) {
   inv_miles, inv_color, classification_id
 } = req.body;
 
-console.log("classification_id:", classification_id); // check this
+
 
 const addVehicleResult = await invModel.addVehicle(
   inv_make, inv_model, inv_year, inv_description,
   inv_image, inv_thumbnail, inv_price,
-  inv_miles, inv_color, parseInt(classification_id) // <- ensure it's an integer
+  inv_miles, inv_color, parseInt(classification_id) 
 );
 
   if (addVehicleResult) {
@@ -130,14 +130,14 @@ const addVehicleResult = await invModel.addVehicle(
 
 invCont.buildInventory = async function (req, res, next) {
   let nav = await utilities.getNav();
-  let classificationSelect = await utilities.buildClassificationList(); // fetch HTML dropdown string
+  let classificationSelect = await utilities.buildClassificationList(); 
 
   res.render("inventory/inv", {
     title: "Inventory Menu",
     nav,
     errors: null,
     notice: req.flash("notice"),
-    classificationSelect  // pass to view here
+    classificationSelect  
   });
 }
 /* ***************************
@@ -161,14 +161,14 @@ invCont.editInventoryView = async function (req, res, next) {
   
   const itemDataArray = await invModel.getInventoryByInventoryId(inv_id)  
   
-  const itemData = itemDataArray[0] // get the first (and likely only) item
+  const itemData = itemDataArray[0] 
 
   if (!itemData) {
   req.flash("notice", "Vehicle not found.")
   return res.redirect("/inv")
 }
   let nav = await utilities.getNav()
-  let classificationSelect = await utilities.buildClassificationList(); // fetch HTML dropdown string
+  let classificationSelect = await utilities.buildClassificationList(); 
   const itemName = `${itemData.inv_make} ${itemData.inv_model}`
   res.render("./inventory/edit", {
     title: "Edit " + itemName,

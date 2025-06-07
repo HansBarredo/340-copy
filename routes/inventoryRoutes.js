@@ -12,14 +12,7 @@ router.get("/type/:classification_id", invController.buildByClassificationId),
 router.get("/detail/:modelId", invController.buildByModelID);
 router.get("/", invController.buildInventory);
 router.get("/add-classification", invController.buildAddClass);
-router.get('/add-vehicle', (req, res) => {
-  res.render('add-vehicle', {
-    title: 'Add Vehicle',
-    messages: {},
-    errors: [],
-    classificationList: buildClassificationDropdown(),
-  });
-});
+router.get('/add-vehicle', utilities.handleErrors(invController.buildAddVehicle))
 router.post(
   "/add-classification",
   inventoryValidation.classificationRules(),
