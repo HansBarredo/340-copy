@@ -1,9 +1,10 @@
-<h1><%= title %></h1>
-
-<% if (notice && notice.length > 0) { %>
+<h1>
+    <%= title %>
+</h1>
+<% if (messages.notice) { %>
   <div class="alert alert-success form-success">
     <p class="mb-2"><strong>Success:</strong></p>
-    <p class="mb-0"><%= notice[0] %></p>
+    <p class="mb-0"><%= messages.notice %></p>
   </div>
 <% } %>
 
