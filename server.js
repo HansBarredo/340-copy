@@ -20,8 +20,8 @@ const errorRoute = require("./routes/errorRoutes");
 const session = require("express-session");
 const pool = require('./database/');
 const flash = require("connect-flash")
-// const bodyParser = require("body-parser")
-// const cookieParser = require("cookie-parser")
+const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 
 
 
@@ -51,8 +51,8 @@ app.use(function (req, res, next) {
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
-// app.use(cookieParser())
-
+app.use(cookieParser())
+app.use(utilities.checkJWTToken)
 /* ***********************
  * View Engine and Templates
  *************************/

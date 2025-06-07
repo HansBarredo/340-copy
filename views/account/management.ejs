@@ -1,0 +1,20 @@
+<h1>Account Management</h1>
+
+  <!-- Flash message -->
+  <% if (notice) { %>
+    <div class="flash-message">
+      <p><%= message %></p>
+    </div>
+  <% } %>
+
+  <!-- Errors -->
+  <% if (errors && errors.length > 0) { %>
+    <div class="error-messages">
+      <ul>
+        <% errors.forEach(error => { %>
+          <li><%= error.msg %></li>
+        <% }) %>
+      </ul>
+    </div>
+  <% } %>
+

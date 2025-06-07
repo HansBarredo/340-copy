@@ -25,7 +25,6 @@ async function getInventoryByClassificationId(classification_id) {
         console.error("getclassificationsbyid error " + error)
     }
   }
-
 /* ***************************
 *  Get all inventory items and classification_name by classification_id
 * ************************** */
@@ -81,4 +80,20 @@ async function checkExistingVehicle(inv_make, inv_model, inv_year) {
     }
 }
 
-module.exports = { getClassifications, getInventoryByClassificationId, getInventoryByModelId, checkExistingClass, addClassification, addVehicle, checkExistingVehicle };
+async function getInventoryByInventoryId(inv_id) {
+    try {
+        const data = await pool.query(
+            `SELECT * FROM public.inventory AS i 
+        JOIN public.classification AS c 
+        ON i.classification_id = c.classification_id 
+        WHERE i.inv_id = $1`,
+            [inv_id]
+        )
+        return data.rows
+    } catch (error) {
+        console.error("getInventoryByInventoryIderror " + error)
+    }
+  }
+
+
+module.exports = { getClassifications, getInventoryByClassificationId, getInventoryByModelId, checkExistingClass, addClassification, addVehicle, checkExistingVehicle, getInventoryByInventoryId};

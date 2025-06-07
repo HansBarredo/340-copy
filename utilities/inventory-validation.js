@@ -137,6 +137,38 @@ validate.checkVehicleData = async (req, res, next) => {
   }
   next()
 }
+validate.checkUpdateData = async (req, res, next) => {
+  let errors = validationResult(req)
+  let nav = await utilities.getNav()
+  let classificationList = await utilities.buildClassificationList()
+  const {
+  inv_id, inv_make, inv_model, inv_year, inv_description,
+  inv_image, inv_thumbnail, inv_price, inv_miles,
+  inv_color, classification_id
+} = req.body;
+  if (!errors.isEmpty()) {
+    res.render("inventory/edit", {
+      title: "Add New Vehicle",
+      nav,
+      classificationList,
+      errors: errors.array(),
+      notice: req.flash("notice"),
+            inv_id,
+            inv_make,
+            inv_model,
+            inv_year,
+            inv_description,
+            inv_image,
+            inv_thumbnail,
+            inv_price,
+            inv_miles,
+            inv_color,
+            classification_id
+    })
+    return
+  }
+  next()
+}
 
 
 module.exports = validate
