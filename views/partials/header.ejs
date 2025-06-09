@@ -1,8 +1,15 @@
 <header id="top-header">
-    <div class="siteName">
-      <h1><a href="/" title="Return to home page">CSE Motors</a></h1>
-    </div>
-    <div id="tools">
-      <a title="Click to log in" href="/login">My Account</a>
-    </div>
+  <div class="siteName">
+    <h1><a href="/" title="Return to home page">CSE Motors</a></h1>
+  </div>
+  <div id="tools">
+    <ul class="tools-list">
+      <% if (typeof loggedin !== 'undefined' && loggedin) { %>
+        <li><a href="/account/logout">Logout</a></li>
+        <li>Welcome, <a href="/account/"> <%= accountData.account_firstname %> </a>!</li>
+      <% } else { %>
+        <li><a href="/account/login">My Account</a></li>
+      <% } %>
+    </ul>
+  </div>
 </header>

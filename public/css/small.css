@@ -8,134 +8,144 @@
   font-family: sans-serif;
 }
 
-/*header*/
-#top-header{
+/* Header */
+#top-header {
   display: flex;
   background-color: white;
   padding: 1rem;
   align-items: center;
 }
-#top-header a{
+#top-header a {
   color: black;
   text-decoration: none;
 }
-
-#tools{
-  margin-left: auto
+#tools {
+  margin-left: auto;
 }
 
-/*Navigation*/
-nav{
+/* Navigation */
+nav {
   background-color: black;
   padding: 1rem;
 }
-nav ul{
+nav ul {
   display: flex;
   justify-content: space-between;
   list-style: none;
 }
-
-nav li{
+nav li {
   color: white;
 }
-
 nav ul a {
   text-decoration: none;
   color: azure;
 }
 
-/*Main*/
-
-body{
+/* Main */
+body {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
-#hero{
+#hero {
   height: 325px;
   background-image: url("/images/vehicles/delorean.jpg");
   background-repeat: no-repeat;
   background-size: auto 175px;
   background-position: center;
 }
-
-#hero h1{
+#hero h1 {
   padding: 1rem 0;
 }
 
-#info-hero{
+#info-hero {
   display: flex;
   flex-direction: column;
   width: fit-content;
-  margin: 2rem 0  0 1rem;
+  margin: 2rem 0 0 1rem;
   color: #0492d9;
   background-color: rgba(255, 255, 255, 0.5);
 }
-
-#info-hero ul{
+#info-hero ul {
   display: flex;
   flex-direction: column;
   list-style: none;
 }
-
-#info-hero h2{
+#info-hero h2 {
   font-size: larger;
 }
-
-#info-hero button{
+#info-hero button {
   width: 80%;
   padding: 0.5rem;
   background-color: #0492d9;
-  border-style:outset;
+  border-style: outset;
   border-color: white;
   font-weight: bold;
   font-size: small;
 }
 
-/*Review*/
-#review ul{
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 0.5rem 0 1rem 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  resize: vertical;
+}
+
+
+/* Review */
+#review ul {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  padding-left: 1.5rem;
+  padding: 1rem 0 1rem 1.5rem;
   gap: 1rem;
 }
 
-/*Upgrades*/
-#cards-container{
+/* Upgrades */
+#cards-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   padding: 1rem;
 }
-
-#cards-container a{
+#cards-container a {
   text-align: center;
 }
-
-#cards-container img{
+#cards-container img {
   padding: 1rem;
   background-color: #0492d9;
-  height:100px;
+  height: 100px;
   width: 100%;
   object-fit: contain;
   border: solid 2px black;
 }
-
-.upgrade-card{
+.upgrade-card {
   display: flex;
   flex-direction: column;
-  
 }
 
-.login-container {
-  background: white;
+/* Form Containers */
+.login-container,
+.form-container,
+.addClass-container,
+#addInventoryForm {
+  max-width: 500px;
+  margin: auto;
   padding: 2rem;
-  border-radius: 10px;
+  border-radius: 8px;
+  background-color: #f7f7f7;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 500px;
-  align-self: center;
-  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+}
+
+.inventory-header{
+  margin-top: 1rem;
 }
 
 .login-container h2 {
@@ -144,131 +154,36 @@ body{
 }
 
 .login-container input[type="email"],
-.login-container input[type="password"] {
+.login-container input[type="password"],
+.registration-form input,
+.addClass-container input[type="text"],
+#addInventoryForm input,
+#addInventoryForm select {
   width: 100%;
   padding: 10px;
   margin: 0.5rem 0 1rem 0;
   border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.login-container button {
-  width: 100%;
-  padding: 10px;
-  background-color: #0056b3;
-  border: none;
-  color: white;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.login-container button:hover {
-  background-color: #0056b3;
-}
-
-.signup-link {
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.signup-link a {
-  text-decoration: none;
-  color: #0056b3;
-}
-
-.signup-link a:hover {
-  text-decoration: underline;
-}
-
-.form-container {
-  max-width: 500px;
-  margin: auto;
-  padding: 2rem;
-  border-radius: 8px;
-  background-color: #f7f7f7;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.registration-form label {
-  display: block;
-  margin-top: 1rem;
-  font-weight: bold;
+  border-radius: 4px;
+  background-color: white;
+  box-sizing: border-box;
 }
 
 .registration-form input {
-  width: 100%;
   padding: 0.5rem;
   margin-top: 0.25rem;
-  border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-.registration-form button {
-  margin-top: 1.5rem;
-  padding: 0.75rem;
-  width: 100%;
-  background-color: #005bbb;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-.flash-message {
-  margin: 1rem 0;
-  padding: 0.75rem;
-  background-color: #fdecea;
-  border-left: 5px solid #f44336;
-  color: #333;
-}
-
-.inv_menu{
+#addInventoryForm select {
   display: flex;
   flex-direction: column;
-  gap:1em;
-
 }
 
-input:required:invalid:not(:placeholder-shown),
-input:required:invalid:focus:not(:placeholder-shown) {
-  background-image: url(/images/close.png);
-  background-position:right center;
-  background-position-x: calc(100% - 5px) ;
-  background-repeat: no-repeat;
-  background-size: 20px;
-
-
-}
-
-input:required:valid {
-  background-image: url(/images/check.png);
-  background-position: right center;
-    background-position-x: calc(100% - 5px);
-    background-repeat: no-repeat;
-    background-size: 20px;
-}
-.addClass-container{
-  max-width: 500px;
-    margin: auto;
-    padding: 2rem;
-    border-radius: 8px;
-    background-color: #f7f7f7;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-}
-
-.addClass-container input[type="text"] {
+.login-container button,
+.registration-form button,
+.addClass-container button,
+#addInventoryForm button {
   width: 100%;
-  padding: 10px;
-  margin: 0.5rem 0 1rem 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.addClass-container button {
-  width: 50%;
   padding: 10px;
   background-color: #0056b3;
   border: none;
@@ -279,118 +194,146 @@ input:required:valid {
   justify-self: center;
   display: block;
   margin: 0 auto;
-
+  transition: background-color 0.3s;
 }
 
-.addClass-container button:hover {
-  background-color: #0056b3;
-}
-
-.addClass-container input[type="text"]{
-  width: 100%;
-  padding: 10px;
-  margin: 0.5rem 0 1rem 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-
-.addClass-container button:hover {
-  background-color: #0056b3;
-}
-
-#addInventoryForm{
-  max-width: 500px;
-  margin: auto;
-  padding: 2rem;
-  border-radius: 8px;
-  background-color: #f7f7f7;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-}
-
-#addInventoryForm select {
-  width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-}
-
-#addInventoryForm select {
-  width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
-  
-}
-
-#addInventoryForm label {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
+.addClass-container button {
+  width: 50%;
 }
 
 #addInventoryForm button {
   width: 50%;
-  padding: 10px;
-  background-color: #0056b3;
-  border: none;
-  color: white;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  justify-self: center;
-  display: block;
-  margin: 1rem auto;
+  margin: 1rem auto 0 auto;
 }
 
+.login-container button:hover,
+.addClass-container button:hover {
+  background-color: #0056b3; /* Same as normal color, consider changing */
+}
 #addInventoryForm button:hover {
   background-color: #004896;
 }
 
-#addInventoryForm input {
-  padding: 0.5rem;
+/* Signup link */
+.signup-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+.signup-link a {
+  text-decoration: none;
+  color: #0056b3;
+}
+.signup-link a:hover {
+  text-decoration: underline;
 }
 
-
-.validation-error {
-  color: red;
-  font-size: 0.9em;
-  margin-top: 2px;
-  margin-bottom: 10px;
+/* Inventory Menu */
+.inv_menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
+/* Input validation */
+input:required:invalid:not(:placeholder-shown),
+input:required:invalid:focus:not(:placeholder-shown) {
+  background-image: url(/images/close.png);
+  background-position: right center;
+  background-position-x: calc(100% - 5px);
+  background-repeat: no-repeat;
+  background-size: 20px;
+}
+
+input:required:valid {
+  background-image: url(/images/check.png);
+  background-position: right center;
+  background-position-x: calc(100% - 5px);
+  background-repeat: no-repeat;
+  background-size: 20px;
+}
+
+/* Validation errors */
+.validation-error,
+.validation-errors,
+.form-errors {
+  color: #842029;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+  max-width: 500px;
+  margin: 1rem auto 1.5rem auto;
+}
+
+.validation-errors ul,
+.form-errors ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+.validation-errors li {
+  color: #e73e4c;
+  list-style-type: disc;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.form-errors li {
+  list-style-type: disc;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+/* Form success */
+.form-success {
+  background-color: #d1e7dd;
+  border: 1px solid #badbcc;
+  color: #0f5132;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+  font-family: sans-serif;
+}
+
+/* Password toggle */
+.password-toggle {
+  display: flex;
+  height: 42px;
+  align-content: center;
+  margin-top: 1rem;
+}
+.password-toggle label,
+.password-toggle input {
+  margin: 0;
+}
+.password-toggle label {
+  width: 135px !important;
+  align-self: center;
+}
+.password-toggle input {
+  width: 20px;
+}
+
+/* Remove input number spinners */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
-
 input[type=number] {
-  -webkit-moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 /* Classification */
-
-main{
+main {
   padding: 1rem;
   height: 100%;
   display: flex;
 }
-
-#inv-display{
+#inv-display {
   display: flex;
   flex-direction: column;
 }
-
 #inv-display li {
   list-style: none;
   display: grid;
@@ -398,123 +341,64 @@ main{
   gap: 0.5rem;
   margin-bottom: 1rem;
 }
-
-#inv-display li a{
+#inv-display li a {
   text-decoration: none;
   color: black;
 }
-
-#inv-display li a img{
+#inv-display li a img {
   height: 100px;
   width: 200px;
   object-fit: contain;
 }
-
-#inv-display li div h2{
+#inv-display li div h2 {
   margin-bottom: 1rem;
-  
 }
 
-#detail-wrapper{
+#detail-wrapper {
   display: flex;
   flex-direction: column;
 }
-
-#detail-wrapper h2{
+#detail-wrapper h2 {
   margin: 1rem 0;
 }
-
 #detail-wrapper table tbody tr:nth-child(2),
 #detail-wrapper table tbody tr:nth-child(3),
 #detail-wrapper table tbody tr:nth-child(5) {
   background-color: rgb(226, 226, 226);
 }
-
 #detail-wrapper table th,
 #detail-wrapper table td {
-
   padding: 0.5rem;
   text-align: left;
 }
-
 table td[colspan="2"],
 table th[colspan="2"] {
   width: 100%;
 }
 
-.validation-errors {
-  background-color: #f8d7da;
-  border: 1px solid #f5c2c7;
-  color: #842029;
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  font-family: Arial, sans-serif;
-  max-width: 500px;
-  display: block;
-  margin: auto;
+/* Headings */
+h1, h2, h3 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #0492d9;
+  margin-bottom: 1rem;
 }
 
-.validation-errors ul {
-  margin: 0;
-  
-  padding-left: 20px;
+/* Links */
+a {
+  color: #0056b3;
+  text-decoration: none;
+  font-weight: 600;
+}
+a:hover {
+  text-decoration: underline;
+  color: #003d7a;
 }
 
-.validation-errors li {
-  color:#e73e4c ;
-  list-style-type: disc;
-  margin-bottom: 5px;
-  font-weight: bold;
+#tools ul.tools-list {
+  list-style: none;      
+  margin: 0;              
+  padding: 0;             
+  display: flex;          
+  gap: 1rem;              
+  align-items: center;    
 }
-
-.password-toggle{
-  display: flex;
-  height: 42px;
-align-content: center;
-margin-top: 1rem;
-}
-
-.password-toggle label,
-.password-toggle input{
-  margin: 0;
-}
-
-.password-toggle label{
-  width: 135px !important;
-  align-self: center;
-}
-
-.password-toggle input {
-  width:20px
-}
-
-
-.form-success {
-  background-color: #d1e7dd;
-  border: 1px solid #badbcc;
-  color: #0f5132;
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-
-.form-errors {
-  background-color: #f8d7da;
-  border: 1px solid #f5c2c7;
-  color: #842029;
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-
-.form-errors ul {
-  margin: 0;
-  padding-left: 20px;
-}
-
-.form-errors li {
-  list-style-type: disc;
-}
-
-

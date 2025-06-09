@@ -149,17 +149,43 @@ Util.checkJWTToken = (req, res, next) => {
  }
 }
 
+Util.checkInventoryAccess = (req, res, next) => {
+  const token = req.cookies.jwt
+
+  if (!token) {
+    req.flash("notice", "Access denied. Please log in.")
+    return res.redirect("/account/login")
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+    const accountType = decoded.account_type
+
+    if (accountType === "Employee" || accountType === "Admin") {
+      req.user = decoded
+      return next()
+    } else {
+      req.flash("notice", "Access restricted. Employee or Admin access required.")
+      return res.redirect("/account/login")
+    }
+  } catch (err) {
+    req.flash("notice", "Invalid or expired token. Please log in again.")
+    return res.redirect("/account/login")
+  }
+}
+
+
 /* ****************************************
  *  Check Login
  * ************************************ */
- Util.checkLogin = (req, res, next) => {
+Util.checkLogin = (req, res, next) => {
   if (res.locals.loggedin) {
     next()
   } else {
     req.flash("notice", "Please log in.")
     return res.redirect("/account/login")
   }
- }
+}
 
  
 

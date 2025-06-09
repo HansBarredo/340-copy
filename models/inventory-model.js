@@ -31,8 +31,7 @@ async function getInventoryByClassificationId(classification_id) {
 async function getInventoryByModelId(model_id) {
     try {
         const data = await pool.query(
-            `SELECT * FROM public.inventory
-            WHERE inventory.inv_id = $1`,
+            `SELECT * FROM public.inventory WHERE inv_model = $1`,
             [model_id]
         )
         return data.rows
@@ -95,5 +94,15 @@ async function getInventoryByInventoryId(inv_id) {
     }
   }
 
+  async function deleteInventory(inv_id) {
+  try {
+    const sql = 'DELETE FROM inventory WHERE inv_id = $1'
+    const data = await pool.query(sql, [inv_id])
+  return data.rows
+  } catch (error) {
+    new Error("Delete Inventory Error")
+  }
+}
 
-module.exports = { getClassifications, getInventoryByClassificationId, getInventoryByModelId, checkExistingClass, addClassification, addVehicle, checkExistingVehicle, getInventoryByInventoryId};
+
+module.exports = { getClassifications, getInventoryByClassificationId, getInventoryByModelId, checkExistingClass, addClassification, addVehicle, checkExistingVehicle, getInventoryByInventoryId, deleteInventory};

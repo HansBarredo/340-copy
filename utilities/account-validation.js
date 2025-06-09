@@ -73,32 +73,18 @@ validate.checkRegData = async (req, res, next) => {
 }
 
 validate.loginRules = () => {
-    return [
-        body("account_email")
-            .trim()
-            .isEmail()
-            .normalizeEmail()
-            .withMessage("A valid email is required.")
-            .custom(async (account_email) => {
-                const emailExists = await accountModel.checkExistingEmail(account_email)
-                if (emailExists) {
-                    throw new Error("Email exists. Please log in or use different email")
-                }
-        }),
-        
-        // password is required and must be strong password
-        body("account_password")
-            .trim()
-            .notEmpty()
-            .isStrongPassword({
-                minLength: 12,
-                minLowercase: 1,
-                minUppercase: 1,
-                minNumbers: 1,
-                minSymbols: 1,
-            })
-            .withMessage("Password does not meet requirements."),
-    ]
+  return [
+    body("account_email")
+      .trim()
+      .isEmail()
+      .normalizeEmail()
+      .withMessage("A valid email is required."),
+
+    body("account_password")
+      .trim()
+      .notEmpty()
+      .withMessage("Password is required."),
+  ]
 }
 
 validate.checkLoginData = async (req, res, next) => {
@@ -118,4 +104,21 @@ validate.checkLoginData = async (req, res, next) => {
     }
     next()
 }
+
+
+
+
+validate.passwordValidation = () => {
+  return [
+    body("account_password")
+      .isLength({ min: 12 })
+      .withMessage("Password must be at least 12 characters long.")
+      .matches(/(?=.*[A-Z])/)
+      .withMessage("Password must contain at least one uppercase letter.")
+      .matches(/(?=.*\d)/)
+      .withMessage("Password must contain at least one number.")
+      .matches(/(?=.*[^a-zA-Z0-9])/)
+      .withMessage("Password must contain at least one special character.")
+  ];
+};
 module.exports = validate

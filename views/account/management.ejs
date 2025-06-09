@@ -1,20 +1,38 @@
-<h1>Account Management</h1>
+<div class="account-container">
 
-  <!-- Flash message -->
-  <% if (notice) { %>
-    <div class="flash-message">
-      <p><%= message %></p>
+  <h1 class="account-title">Account Management</h1>
+
+  <% if (notice && notice.length > 0) { %>
+    <div class="alert alert-success notice-message">
+      <p><strong>Success:</strong> <%= notice[0] %></p>
     </div>
   <% } %>
 
-  <!-- Errors -->
   <% if (errors && errors.length > 0) { %>
-    <div class="error-messages">
-      <ul>
-        <% errors.forEach(error => { %>
-          <li><%= error.msg %></li>
-        <% }) %>
-      </ul>
+    <div class="alert alert-error error-message">
+      <p><strong>Error:</strong> <%= errors[0].msg || errors[0] %></p>
     </div>
   <% } %>
 
+  <% if (typeof loggedin !== 'undefined' && loggedin) { %>
+    <h2 class="welcome-message">Welcome <%= accountData.account_firstname %></h2>
+
+    <p class="account-link">
+      <a href="/account/update/<%= accountData.account_id %>">Update Account Information</a>
+    </p>
+
+    <p class="account-link">
+      <a href="/account/update-password/<%= accountData.account_id %>">Update Password</a>
+    </p>
+
+    <% if (accountData.account_type === 'Employee' || accountData.account_type === 'Admin') { %>
+      <h3 class="inventory-header">Inventory Management</h3>
+      <p class="account-link"><a href="/inv/">Access Inventory Management</a></p>
+    <% } %>
+
+  <% } else { %>
+    <h2 class="welcome-message">Welcome to CSE Motors</h2>
+    <p class="login-prompt">Please <a href="/account/login">log in</a> to access your account.</p>
+  <% } %>
+
+</div>

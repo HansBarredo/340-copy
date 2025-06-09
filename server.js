@@ -27,9 +27,11 @@ const cookieParser = require("cookie-parser")
 
 
 
+
 /* ***********************
  * Middleware
  * ************************/
+
 app.use(session({
   store: new (require('connect-pg-simple')(session))({
     createTableIfMissing: true,
@@ -48,11 +50,12 @@ app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
-
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
 app.use(cookieParser())
 app.use(utilities.checkJWTToken)
+
+
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -64,7 +67,7 @@ app.set("layout", "./layouts/layout") // not at views root
 /* ***********************
  * Routes
  *************************/
-app.use(express.static("public"))
+app.use("/static", static)
 //Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
 
