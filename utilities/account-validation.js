@@ -82,27 +82,27 @@ validate.loginRules = () => {
     body("account_password")
       .trim()
       .notEmpty()
-      .withMessage("Password is required."),
-  ]
-}
+      .withMessage("Password is required.")
+  ];
+};
 
 validate.checkLoginData = async (req, res, next) => {
-    const {account_email, account_password } = req.body
-    const errors = validationResult(req).array()
-    if (!errors.isEmpty()) {
-        let nav = await utilities.getNav()
-        res.render("account/login", {
-            errors,
-            title: "Login",
-            nav,
-            account_email,
-            account_password
-        })
-        return
-    }
-    next()
-}
+  const { account_email } = req.body;
+  const errors = validationResult(req);
 
+  if (!errors.isEmpty()) {
+    const nav = await utilities.getNav();
+    return res.render("account/login", {
+      title: "Login",
+      nav,
+      errors,
+      notice: [],
+      account_email
+    });
+  }
+
+  next();
+};
 
 
 

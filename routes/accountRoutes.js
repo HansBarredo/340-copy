@@ -28,7 +28,7 @@ router.post(
   accountValidation.loginRules(),
   accountValidation.checkLoginData,
   utilities.handleErrors(accountController.accountLogin)
-)
+);
 router.post(
   "/update-password/:accountId",
    accountValidation.passwordValidation(),
