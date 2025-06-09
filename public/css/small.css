@@ -135,6 +135,7 @@ textarea {
 #addInventoryForm {
   max-width: 500px;
   margin: auto;
+  margin-top: 1rem;
   padding: 2rem;
   border-radius: 8px;
   background-color: #f7f7f7;
