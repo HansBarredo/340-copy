@@ -1,50 +1,47 @@
- <h1>
-        <%= title %>
-    </h1>
+<h1><%= title %></h1>
 
-    <% if (messages.notice) { %>
-        <div class="alert alert-success">
-            <%= notice %>
-        </div>
-        <% } %>
+<% if (messages.notice) { %>
+    <div class="form-success">
+        <%= messages.notice %>
+    </div>
+<% } %>
 
-            <% if (errors) { %>
-                <ul class="notice">
-                    <% errors.array().forEach(error=> { %>
-                        <li>
-                            <%= error.msg %>
-                        </li>
-                        <% }) %>
-                </ul>
-                <% } %>
+<% if (errors) { %>
+    <div class="form-errors">
+        <ul>
+            <% errors.array().forEach(error => { %>
+                <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    </div>
+<% } %>
 
 <main class="form-container">
-   
-                    <form action="/account/register" method="POST" class="registration-form">
-                        <label for="account_firstname">First Name</label>
-                        <input type="text" id="account_firstname" name="account_firstname" required
-                            value="<%= typeof locals.account_firstname !== 'undefined' ? locals.account_firstname : '' %>" />
+    <form action="/account/register" method="POST" class="registration-form">
+        <label for="account_firstname">First Name</label>
+        <input type="text" id="account_firstname" name="account_firstname" required placeholder="Enter your first name"
+            value="<%= typeof locals.account_firstname !== 'undefined' ? locals.account_firstname : '' %>" />
 
-                        <label for="account_lastname">Last Name</label>
-                        <input type="text" id="account_lastname" name="account_lastname" required
-                            value="<%= typeof locals.account_lastname !== 'undefined' ? locals.account_lastname : '' %>" />
+        <label for="account_lastname">Last Name</label>
+        <input type="text" id="account_lastname" name="account_lastname" required placeholder="Enter your last name"
+            value="<%= typeof locals.account_lastname !== 'undefined' ? locals.account_lastname : '' %>" />
 
-                        <label for="account_email">Email Address</label>
-                        <input type="email" id="account_email" name="account_email" required
-                            value="<%= typeof locals.account_email !== 'undefined' ? locals.account_email : '' %>" />
+        <label for="account_email">Email Address</label>
+        <input type="email" id="account_email" name="account_email" required placeholder="Enter your email"
+            value="<%= typeof locals.account_email !== 'undefined' ? locals.account_email : '' %>" />
 
-                        <label for="account_password">Password</label>
-                        <input type="password" id="account_password" name="account_password" required
-                            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
-                            title="Password must be at least 12 characters, contain 1 uppercase letter, 1 number, and 1 special character" />
+        <label for="account_password">Password</label>
+        <input type="password" id="account_password" name="account_password" required
+            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+            title="Password must be at least 12 characters, contain 1 uppercase letter, 1 number, and 1 special character" />
 
-                        <div class="password-toggle">
-                            <label for="togglePassword">Show Password</label>
-                            <input type="checkbox" id="togglePassword" />
-                        </div>
+        <div class="password-toggle">
+            <label for="togglePassword">Show Password</label>
+            <input type="checkbox" id="togglePassword" />
+        </div>
 
-                        <button type="submit">Register</button>
-                    </form>
+        <button type="submit">Register</button>
+    </form>
 
-                    <script src="/js/showPassword.js"></script>
+    <script src="/js/showPassword.js"></script>
 </main>

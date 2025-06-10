@@ -28,8 +28,12 @@ router.post(
   inventoryValidation.checkVehicleData,
   utilities.handleErrors(invController.addVehicle)
 )
-
-router.post("/update/", utilities.handleErrors(invController.updateInventory))
+router.post(
+  "/edit/:inv_id",
+  inventoryValidation.vehicleRules(), 
+  inventoryValidation.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
+);
 router.post("/delete/:inv_id", utilities.handleErrors(invController.deleteInventory))
 
 module.exports = router;

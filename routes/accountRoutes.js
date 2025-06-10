@@ -30,8 +30,9 @@ router.post(
   utilities.handleErrors(accountController.accountLogin)
 );
 router.post(
-  "/update-password/:accountId",
-   accountValidation.passwordValidation(),
-  utilities.handleErrors(accountController.updatePassword)
-)
+    "/update-password/:accountId",
+    accountValidation.passwordValidation(),
+    utilities.handleErrors(accountController.updatePassword)
+);
+
 module.exports = router 

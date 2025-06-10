@@ -1,18 +1,20 @@
-<div class="account-container">
 
-  <h1 class="account-title">Account Management</h1>
+
+<h1 class="account-title">Account Management</h1>
 
   <% if (notice && notice.length > 0) { %>
-    <div class="alert alert-success notice-message">
-      <p><strong>Success:</strong> <%= notice[0] %></p>
-    </div>
-  <% } %>
+  <div class="alert alert-success notice-message">
+    <p><strong>Success:</strong> <%= notice[0] %></p> 
+  </div>
+<% } %>
 
-  <% if (errors && errors.length > 0) { %>
-    <div class="alert alert-error error-message">
-      <p><strong>Error:</strong> <%= errors[0].msg || errors[0] %></p>
-    </div>
-  <% } %>
+<% if (errors && errors.length > 0) { %>
+  <div class="alert alert-error error-message">
+    <p><strong>Error:</strong> <%= errors[0].msg || errors[0] %></p>
+  </div>
+<% } %>
+
+<div class="account-container">
 
   <% if (typeof loggedin !== 'undefined' && loggedin) { %>
     <h2 class="welcome-message">Welcome <%= accountData.account_firstname %></h2>

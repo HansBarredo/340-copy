@@ -277,6 +277,7 @@ invCont.deleteInventoryView = async function (req, res, next) {
 
 invCont.deleteInventory = async function (req, res) {
   const inv_id = parseInt(req.params.inv_id);
+
   if (!inv_id) {
     req.flash("notice", "Invalid inventory ID.");
     return res.redirect("/inv");
@@ -292,8 +293,8 @@ invCont.deleteInventory = async function (req, res) {
     res.redirect("/inv");
   } catch (error) {
     console.error("Delete Inventory error:", error);
-    req.flash("notice", "Sorry, deleting inventory failed.");
+    req.flash("notice", "Deleting inventory failed. Please try again.");
     res.redirect("/inv");
   }
-}
+};
 module.exports = invCont

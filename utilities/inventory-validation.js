@@ -107,68 +107,85 @@ validate.vehicleRules = () => {
  * ***************************** */
 
 validate.checkVehicleData = async (req, res, next) => {
-  let errors = validationResult(req)
-  let nav = await utilities.getNav()
-  let classificationList = await utilities.buildClassificationList()
+  let errors = validationResult(req);
+  let nav = await utilities.getNav();
+  let classificationList = await utilities.buildClassificationList();
   const {
-  inv_make, inv_model, inv_year, inv_description,
-  inv_image, inv_thumbnail, inv_price, inv_miles,
-  inv_color, classification_id
-} = req.body;
-  if (!errors.isEmpty()) {
-    res.render("inventory/add-vehicle", {
-      title: "Add New Vehicle",
-      nav,
-      classificationList,
-      errors: errors.array(),
-      notice: req.flash("notice"),
-            inv_make,
-            inv_model,
-            inv_year,
-            inv_description,
-            inv_image,
-            inv_thumbnail,
-            inv_price,
-            inv_miles,
-            inv_color,
-            classification_id
-    })
-    return
-  }
-  next()
-}
-validate.checkUpdateData = async (req, res, next) => {
-  let errors = validationResult(req)
-  let nav = await utilities.getNav()
-  let classificationList = await utilities.buildClassificationList()
-  const {
-  inv_id, inv_make, inv_model, inv_year, inv_description,
-  inv_image, inv_thumbnail, inv_price, inv_miles,
-  inv_color, classification_id
-} = req.body;
-  if (!errors.isEmpty()) {
-    res.render("inventory/edit", {
-      title: "Add New Vehicle",
-      nav,
-      classificationList,
-      errors: errors.array(),
-      notice: req.flash("notice"),
-            inv_id,
-            inv_make,
-            inv_model,
-            inv_year,
-            inv_description,
-            inv_image,
-            inv_thumbnail,
-            inv_price,
-            inv_miles,
-            inv_color,
-            classification_id
-    })
-    return
-  }
-  next()
-}
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id,
+  } = req.body;
 
+  if (!errors.isEmpty()) {
+    req.flash("notice", "Vehicle data validation failed. Please review the errors.");
+    return res.render("inventory/add-vehicle", {
+      title: "Add New Vehicle",
+      nav,
+      classificationList,
+      errors: errors.array(),
+      notice: req.flash("notice"),
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classification_id,
+    });
+  }
+  next();
+};
+
+validate.checkUpdateData = async (req, res, next) => {
+  let errors = validationResult(req);
+  let nav = await utilities.getNav();
+  let classificationList = await utilities.buildClassificationList();
+  const {
+    inv_id,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id,
+  } = req.body;
+
+  if (!errors.isEmpty()) {
+    req.flash("notice", "Update failed. Please review the errors.");
+    return res.render("inventory/edit", {
+      title: `Edit ${inv_make} ${inv_model}`,
+      nav,
+      classificationList,
+      errors: errors.array(),
+      notice: req.flash("notice"),
+      inv_id,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classification_id,
+    });
+  }
+  next();
+};
 
 module.exports = validate
