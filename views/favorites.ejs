@@ -1,0 +1,11 @@
+<h1>My Favorite Cars</h1>
+
+<ul>
+  <% favorites.forEach(car => { %>
+    <li>
+      <a href="/inventory/detail/<%= car.inv_id %>">
+        <%= car.inv_make %> <%= car.inv_model %> (<%= car.inv_year %>)
+      </a>
+    </li>
+  <% }) %>
+</ul>

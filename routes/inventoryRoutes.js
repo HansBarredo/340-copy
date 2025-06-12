@@ -8,9 +8,8 @@ const accountController = require("../controllers/accountController")
 
 // Route to build inventory by classification view
 router.get("/type/:classification_id", invController.buildByClassificationId)
-router.get("/detail/:modelId", invController.buildByModelID)
+router.get("/detail/:inv_id", invController.buildByVehicleID,)
 router.get("/add-vehicle", utilities.handleErrors(invController.buildAddVehicle))
-
 router.get("/getInventory/:classification_id", utilities.checkInventoryAccess, utilities.handleErrors(invController.getInventoryJSON))
 router.get("/edit/:inv_id", utilities.checkInventoryAccess, utilities.handleErrors(invController.editInventoryView))
 router.get("/delete/:inv_id", utilities.checkInventoryAccess, utilities.handleErrors(invController.deleteInventoryView))

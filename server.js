@@ -22,6 +22,7 @@ const pool = require('./database/');
 const flash = require("connect-flash")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const favoriteRoutes = require('./routes/favoriteRoutes');
 
 
 
@@ -82,6 +83,7 @@ app.get("/login", utilities.handleErrors(accountController.buildLogin))
 app.get("/register", utilities.handleErrors(accountController.buildRegister))
 
 
+app.use("/favorites", favoriteRoutes); // Mounts it as /favorites
 //Error
 app.use('/errors', errorRoute)
 

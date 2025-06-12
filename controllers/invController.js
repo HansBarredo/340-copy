@@ -1,6 +1,5 @@
-const invModel = require("../models/inventory-model")
+const invModel = require('../models/inventory-model');
 const utilities = require("../utilities/")
-
 const invCont = {}
 
 /* ***************************
@@ -33,9 +32,9 @@ invCont.buildByClassificationId = async function (req, res, next) {
   })
 }
 
-invCont.buildByModelID = async function (req, res, next) {
-  const model_id = req.params.modelId
-  const data = await invModel.getInventoryByModelId(model_id)
+invCont.buildByVehicleID = async function (req, res, next) {
+  const inv_id = req.params.inv_id
+  const data = await invModel.getInventoryByModelId(inv_id)
   let nav = await utilities.getNav()
 
   if (!data || data.length === 0) {
@@ -48,8 +47,10 @@ invCont.buildByModelID = async function (req, res, next) {
     })
   }
 
-  const grid = await utilities.buildModelGrid(data)
-  const { inv_make, inv_model, inv_year } = data[0]
+  const vehicle = data[0]
+  const grid = await utilities.buildModelGrid([vehicle])
+  const { inv_make, inv_model, inv_year } = vehicle
+
   res.render("inventory/detail", {
     title: `${inv_make} ${inv_model} ${inv_year}`,
     nav,
@@ -57,6 +58,7 @@ invCont.buildByModelID = async function (req, res, next) {
     notice: req.flash("notice")
   })
 }
+
 
 invCont.buildInventory = async function (req, res, next) {
   let nav = await utilities.getNav()
@@ -295,6 +297,30 @@ invCont.deleteInventory = async function (req, res) {
     console.error("Delete Inventory error:", error);
     req.flash("notice", "Deleting inventory failed. Please try again.");
     res.redirect("/inv");
+  }
+};
+
+invCont.toggleFavorite = async function (req, res) {
+  try {
+    const itemId = parseInt(req.params.inv_id); 
+    let { is_favorite } = req.body;
+
+    console.log("itemId:", itemId);
+    console.log("is_favorite:", is_favorite);
+
+    if (isNaN(itemId)) {
+      return res.status(400).json({ error: "Invalid item ID" });
+    }
+
+
+    const favoriteStatus = is_favorite === true;
+
+    await invModel.updateFavoriteStatus(itemId, favoriteStatus);
+
+    return res.status(200).json({ message: "Favorite status updated" });
+  } catch (err) {
+    console.error("Server Error in toggleFavorite:", err);
+    return res.status(500).json({ error: "Internal server error" });
   }
 };
 module.exports = invCont
