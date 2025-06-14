@@ -1,4 +1,3 @@
-// Needed Resources 
 const express = require("express")
 const router = new express.Router()
 const accountController = require("../controllers/accountController")
@@ -6,7 +5,6 @@ const utilities = require("../utilities")
 const favoriteController = require("../controllers/favoriteController")
 const accountValidation = require('../utilities/account-validation');
 
-// Route to build inventory by classification view
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
 router.get("/logout", accountController.logout)
 router.get("/register", utilities.handleErrors(accountController.buildRegister));

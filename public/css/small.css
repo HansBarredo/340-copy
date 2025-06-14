@@ -215,7 +215,7 @@ margin: auto;
 
 .login-container button:hover,
 .addClass-container button:hover {
-  background-color: #0056b3; /* Same as normal color, consider changing */
+  background-color: #0056b3; 
 }
 #addInventoryForm button:hover {
   background-color: #004896;
@@ -319,7 +319,7 @@ input:required:valid {
   width: 20px;
 }
 
-/* Remove input number spinners */
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

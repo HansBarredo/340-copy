@@ -54,7 +54,7 @@ async function getAccountById(account_id) {
  *   Update account with validation
  * *************************** */
 async function updateAccount(accountId, firstName, lastName, email, accountType) {
-    // Ensure accountType has a valid value
+   
     if (!accountType) {
         console.error("Invalid account_type: Empty value received.");
         throw new Error("Invalid account_type: Value cannot be empty.");
@@ -75,7 +75,7 @@ async function updateAccount(accountId, firstName, lastName, email, accountType)
         firstName, 
         lastName, 
         email, 
-        accountType || 'Client', // Ensure fallback value
+        accountType || 'Client', 
         accountId    
     ]);
 
