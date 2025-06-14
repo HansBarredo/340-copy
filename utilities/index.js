@@ -84,7 +84,7 @@ Util.buildModelGrid = async function (data, accountId) {
   let grid;
 
   if (data.length > 0) {
-    grid = '<div id="detail-wrapper">';
+    grid = '<div id="detail-wrapper">'
     data.forEach((vehicle) => {
       grid += `
           <img src="${vehicle.inv_thumbnail}" alt="Image of ${
@@ -163,6 +163,23 @@ Util.buildFavoriteGrid = async function (data, accountId) {
   }
 
   return grid;
+};
+
+Util.buildClassificationList = async function (selectedId = null) {
+    const data = await invModel.getClassifications();
+    
+    let classificationList =
+        '<select name="classification_id" id="classificationList" required>';
+    
+    classificationList += "<option value=''>Choose a Classification</option>";
+
+    data.rows.forEach((row) => {
+        const isSelected = selectedId != null && row.classification_id == selectedId;
+        classificationList += `<option value="${row.classification_id}"${isSelected ? " selected" : ""}>${row.classification_name}</option>`;
+    });
+
+    classificationList += "</select>";
+    return classificationList;
 };
 
 /* ****************************************

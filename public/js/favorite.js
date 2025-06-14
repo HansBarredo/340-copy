@@ -16,7 +16,7 @@ document.querySelectorAll('.favorite-btn').forEach(btn => {
 
       if (data.status === 'removed') {
       
-        const card = btn.closest('.favorite-card');
+        const card = btn.closest('#detail-wrapper');
         card?.remove();
 
         if (document.querySelectorAll('.favorite-card').length === 0) {
