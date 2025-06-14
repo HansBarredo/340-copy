@@ -3,7 +3,8 @@ const express = require("express")
 const router = new express.Router()
 const accountController = require("../controllers/accountController")
 const utilities = require("../utilities")
-const accountValidation = require('../utilities/account-validation')
+const favoriteController = require("../controllers/favoriteController")
+const accountValidation = require('../utilities/account-validation');
 
 // Route to build inventory by classification view
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
@@ -15,6 +16,7 @@ router.get(
   utilities.checkLogin,
   utilities.handleErrors(accountController.buildUpdatePassword)
 )
+router.get("/favorite", utilities.checkJWTToken, favoriteController.getFavorites);
 
 // router.get("/management", 
 //   utilities.checkLogin, 

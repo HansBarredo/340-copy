@@ -84,7 +84,8 @@
         display: grid;
         grid-template-areas:
             "image heading"
-            "image detail";
+            "image detail"
+            "image button";
         grid-template-columns: 1fr 1fr;
 
         gap: 1rem;
@@ -113,6 +114,11 @@
         grid-area: detail;
         width: 100%;
         border-collapse: collapse;
+    }
+
+    #detail-wrapper button{
+        grid-area: button;
+        text-align: left;
     }
 
     #detail-wrapper table tbody tr:nth-child(2),

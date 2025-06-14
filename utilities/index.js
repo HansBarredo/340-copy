@@ -87,23 +87,19 @@ Util.buildModelGrid = async function (data, accountId) {
     grid = '<div id="detail-wrapper">';
     data.forEach((vehicle) => {
       grid += `
-        <div class="vehicle-card">
           <img src="${vehicle.inv_thumbnail}" alt="Image of ${
         vehicle.inv_make
       } ${vehicle.inv_model} on CSE Motors" />
           <h2>${vehicle.inv_make} ${vehicle.inv_model} Details</h2>
-
-         <button 
-  class="favorite-btn" 
-  data-inv-id="${vehicle.inv_id}" 
-  data-account-id="${accountId}">
-  ❤️ Favorite
-</button>
-
-          <p>DEBUG inv_id: ${vehicle.inv_id}</p>
-
           <table>
             <tbody>
+            
+                  <button 
+            class="favorite-btn" 
+            data-inv-id="${vehicle.inv_id}" 
+            data-account-id="${accountId}">
+            🤍 Add to Favorite
+          </button>
               <tr><th scope="row">Price:</th><td>$${new Intl.NumberFormat(
                 "en-US"
               ).format(vehicle.inv_price)}</td></tr>
@@ -113,9 +109,54 @@ Util.buildModelGrid = async function (data, accountId) {
               <tr><th scope="row">Miles:</th><td>${vehicle.inv_miles}</td></tr>
             </tbody>
           </table>
-        </div>
       `;
     });
+    grid += "</div>";
+  } else {
+    grid = '<p class="notice">Sorry, no matching vehicles could be found.</p>';
+  }
+
+  return grid;
+};
+
+Util.buildFavoriteGrid = async function (data, accountId) {
+  let grid;
+
+  if (data.length > 0) {
+    grid = '<div id="favorite-wrapper">';
+    data.forEach((vehicle) => {
+      grid += 
+          `
+      '<div id="detail-wrapper">';
+          <img src="${vehicle.inv_thumbnail}" alt="Image of ${
+        vehicle.inv_make
+      } ${vehicle.inv_model} on CSE Motors" />
+
+      <div class="favorite-card" data-id="<%= vehicle.inv_id %>">
+        <h2>${vehicle.inv_make} ${vehicle.inv_model} Details</h2>
+          <table>
+            <tbody>
+            
+                  <button 
+            class="favorite-btn" 
+            data-inv-id="${vehicle.inv_id}" 
+            data-account-id="${accountId}">
+            ❤️ Remove Favorite
+          </button>
+              <tr><th scope="row">Price:</th><td>$${new Intl.NumberFormat(
+                "en-US"
+              ).format(vehicle.inv_price)}</td></tr>
+              <tr><th colspan="2" scope="row">Description:</th></tr>
+              <tr><td colspan="2">${vehicle.inv_description}</td></tr>
+              <tr><th scope="row">Color:</th><td>${vehicle.inv_color}</td></tr>
+              <tr><th scope="row">Miles:</th><td>${vehicle.inv_miles}</td></tr>
+            </tbody>
+          </table>
+      </div>
+      </div>`
+      ;
+    });
+    
     grid += "</div>";
   } else {
     grid = '<p class="notice">Sorry, no matching vehicles could be found.</p>';
@@ -179,7 +220,6 @@ Util.checkJWTToken = (req, res, next) => {
     next();
   }
 };
-
 
 Util.checkInventoryAccess = (req, res, next) => {
   const token = req.cookies.jwt;

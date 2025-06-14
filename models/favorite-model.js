@@ -42,8 +42,21 @@ async function removeFavorite(account_id, inv_id) {
   }
 }
 
+async function getFavoritesWithInventory(account_id) {
+  const sql = `
+    SELECT i.*
+    FROM favorites f
+    JOIN inventory i ON f.inv_id = i.inv_id
+    WHERE f.account_id = $1
+  `;
+  const result = await pool.query(sql, [account_id]);
+  return result.rows;
+}
+
+
 module.exports = {
   checkFavorite,
   addFavorite,
   removeFavorite,
+  getFavoritesWithInventory
 };

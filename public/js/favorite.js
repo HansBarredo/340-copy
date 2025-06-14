@@ -8,11 +8,25 @@ document.querySelectorAll('.favorite-btn').forEach(btn => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include", // ✅ include cookies (for JWT)
+        credentials: "include",
       });
 
       const data = await response.json();
       console.log("Server response:", data);
+
+      if (data.status === 'removed') {
+      
+        const card = btn.closest('.favorite-card');
+        card?.remove();
+
+        if (document.querySelectorAll('.favorite-card').length === 0) {
+          const container = document.querySelector('.grid-container') || document.body;
+          container.innerHTML = "<p class='notice'>You don't have any favorites yet.</p>";
+        }
+      } else if (data.status === 'added') {
+        btn.textContent = '❤️ Remove Favorite';
+      }
+
     } catch (err) {
       console.error("Error sending favorite toggle request:", err);
     }

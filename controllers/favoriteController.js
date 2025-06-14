@@ -1,9 +1,11 @@
 const favoriteModel = require("../models/favorite-model");
+const invModel = require("../models/inventory-model");
+const Util = require("../utilities/");
 /* ***************************
  *  Toggle favorite for current user
  * ************************** */
 async function toggleFavorite(req, res) {
-  const account_id = req.user.account_id; // 👈 Use value from JWT
+  const account_id = req.user.account_id;
   const inv_id = req.params.inv_id;
 
   try {
@@ -37,7 +39,37 @@ async function isFavorite(req, res) {
   }
 }
 
+async function getFavorites(req, res) {
+  const account_id = req.user.account_id;
+  const nav = await Util.getNav();
+
+  try {
+    const vehicles = await favoriteModel.getFavoritesWithInventory(account_id); 
+
+    if (vehicles.length === 0) {
+      return res.render("account/favorite", {
+        title: "My Favorites",
+        nav,
+        grid: "<p class='notice'>You don't have any favorites yet.</p>",
+      });
+    }
+
+    const grid = await Util.buildFavoriteGrid(vehicles, account_id);
+
+    res.render("account/favorite", {
+      title: "My Favorites",
+      nav,
+      grid,
+    });
+  } catch (error) {
+    console.error("getFavorites error:", error.message);
+    res.status(500).render("error", { message: "Could not load favorites." });
+  }
+}
+
+
 module.exports = {
   toggleFavorite,
-  isFavorite
+  isFavorite,
+  getFavorites,
 };

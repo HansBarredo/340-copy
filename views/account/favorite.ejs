@@ -1,0 +1,14 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+<% } else { %>
+    <% res.redirect('/') %>
+<% } %>
+
+<%- grid %>
+
+<script>
+  window.loggedIn = "<%= typeof loggedin !== 'undefined' && loggedin ? 'true' : 'false' %>";
+</script>
+
+<script src="/js/favorite.js"></script>
+

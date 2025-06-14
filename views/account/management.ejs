@@ -1,8 +1,7 @@
 
-
 <h1 class="account-title">Account Management</h1>
 
-  <% if (notice && notice.length > 0) { %>
+<% if (notice && notice.length > 0) { %>
   <div class="alert alert-success notice-message">
     <p><strong>Success:</strong> <%= notice[0] %></p> 
   </div>
@@ -15,7 +14,6 @@
 <% } %>
 
 <div class="account-container">
-
   <% if (typeof loggedin !== 'undefined' && loggedin) { %>
     <h2 class="welcome-message">Welcome <%= accountData.account_firstname %></h2>
 
@@ -27,6 +25,10 @@
       <a href="/account/update-password/<%= accountData.account_id %>">Update Password</a>
     </p>
 
+    <p class="account-link">
+      <a href="/account/favorite">❤️ View My Favorites</a>
+    </p>
+
     <% if (accountData.account_type === 'Employee' || accountData.account_type === 'Admin') { %>
       <h3 class="inventory-header">Inventory Management</h3>
       <p class="account-link"><a href="/inv/">Access Inventory Management</a></p>
@@ -36,5 +38,6 @@
     <h2 class="welcome-message">Welcome to CSE Motors</h2>
     <p class="login-prompt">Please <a href="/account/login">log in</a> to access your account.</p>
   <% } %>
-
 </div>
+
+

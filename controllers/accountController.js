@@ -139,6 +139,20 @@ accountController.buildUpdateAccount = async function (req, res) {
   });
 };
 
+// accountController.viewFavorites = async (req, res) => {
+//   try {
+
+//     res.render("account/favorites", {
+//       title: "My Favorites",
+//       accountData: req.session.accountData || {},
+//     });
+//   } catch (err) {
+//     console.error("Error loading favorites:", err);
+//     res.status(500).render("error", { message: "Server error loading favorites." });
+//   }
+// };
+
+
 accountController.updateAccount = async function (req, res) {
   const accountId = req.params.accountId;
   const { account_firstname, account_lastname, account_email, account_type } = req.body;

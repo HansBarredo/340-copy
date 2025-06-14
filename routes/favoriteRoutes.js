@@ -7,6 +7,7 @@ const utilities = require("../utilities");
 router.post("/toggle/:inv_id", utilities.checkJWTToken, favoriteController.toggleFavorite);
 
 
+
 // Check if current user has favorited an item
 router.get(
   "/favorites/check/:inv_id",
