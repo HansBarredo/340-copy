@@ -191,7 +191,7 @@ accountController.buildUpdatePassword = async function (req, res) {
 
 accountController.updatePassword = async function (req, res) {
     const nav = await utilities.getNav();
-    const accountId = req.params.accountId;  // Use param instead of body
+    const accountId = req.params.accountId;  
     const { account_password } = req.body;
     const errors = validationResult(req);
 

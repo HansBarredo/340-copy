@@ -208,7 +208,7 @@ Util.checkJWTToken = (req, res, next) => {
           return res.redirect("/account/login");
         }
 
-        // 🔍 DEBUG HERE
+      
         console.log("✅ Decoded JWT accountData:", accountData);
 
         res.locals.accountData = accountData;
